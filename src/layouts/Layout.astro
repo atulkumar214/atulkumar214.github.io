@@ -1,0 +1,39 @@
+---
+import "../styles/global.css";
+import Header from "@/components/Header.astro";
+import { Font } from "astro:assets";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="./apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="./favicon-16x16.png"
+		/>
+		<title>Atul Kumar</title>
+		<Font cssVariable="--font-open-sans" preload />
+		<Font cssVariable="--font-inter" preload />
+	</head>
+	<body
+		class="mx-auto flex min-h-screen max-w-[872px] flex-col gap-9 bg-neutral-950 px-5 md:px-10 py-8 text-sm text-neutral-400 md:gap-20 md:py-16"
+	>
+		<Header />
+		<slot />
+	</body>
+</html>

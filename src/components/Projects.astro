@@ -1,0 +1,56 @@
+---
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+
+import projects from "@/data/project";
+import Link from "@/components/shared/Link.astro";
+
+const formatTechs = (values: string[]) =>
+	values.toString().replaceAll(",", " • ");
+---
+
+<section class="flex flex-col gap-8">
+	<header class="flex w-full flex-row justify-between gap-2">
+		<h3 class="text-lg text-neutral-100">Projects</h3>
+	</header>
+	<div class="flex flex-col gap-4">
+		{
+			projects.length !== 0 &&
+				projects.map((project) => (
+					<div class="flex flex-col gap-2">
+						<div class="flex flex-col md:flex-row md:justify-between">
+							<div class="flex flex-col gap-1 md:gap-4 md:flex-row md:items-center">
+								<p class="text-neutral-100">{project.title}</p>
+								<p>{formatTechs(project.techs)}</p>
+							</div>
+							<ul role="list" class="flex flex-row gap-2">
+								{[
+									{
+										label: "GitHub",
+										link: project.github,
+									},
+									{
+										label: "Live",
+										link: project.live,
+									},
+								].map((social, index, array) => (
+									<>
+										<li>
+											<Link
+												href={social.link}
+												label={social.label}
+											/>
+										</li>
+										{index !== array.length - 1 && (
+											<li>/</li>
+										)}
+									</>
+								))}
+							</ul>
+						</div>
+						<p class="md:w-[90%]">{project.description}</p>
+					</div>
+				))
+		}
+	</div>
+</section>
